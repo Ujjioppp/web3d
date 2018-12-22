@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/three/css/normalize.css}" href="../static/three/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/three/css/default.css}" href="../static/three/css/default.css">
+    <script th:src="@{/three/js/three.min.js}" src="../static/three/js/three.min.js"></script>
+    <script th:src="@{/three/js/photo-sphere-viewer.min.js}" src="../static/three/js/photo-sphere-viewer.min.js"></script>
+</head>
+<style>
+    body{ text-align:center}
+    .container {
+        margin:0 auto;
+    }
+    .pano {
+        margin:0 auto;
+        z-index:1;
+    }
+    .description {
+        width:400px;
+        left:350px;
+        margin-top:40px;
+        z-index:100;
+        position:absolute;
+        float:left;
+    }
+    .description h1 {
+        font-size:40px;
+        color:#FFF
+    }
+    .description p {
+        font-size:22px;
+        color:#FFF
+    }
+</style>
+<body>
+<div class="container">
+    <div id="my-pano" class="pano"></div>
+</div>
+</body>
+<script>
+    window.onload = function() {
+        var div = document.getElementById('my-pano');
+        var PSV = new PhotoSphereViewer({
+            // Panorama, given in base 64
+            panorama: '../images/360qj2.jpg',
+
+            // Container
+            container: div,
+
+            autoload:true,
+
+            // Deactivate the animation
+            time_anim: 2000,
+
+            // Display the navigation bar
+            navbar: false,
+
+            // Resize the panorama
+            size: {
+                width: '70%',
+                height: 700
+            }
+        });
+    };
+</script>
+</html>
